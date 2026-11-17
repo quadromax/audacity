@@ -1,0 +1,90 @@
+
+# ============================================
+# AUDACITY — Git Ignore
+# Next.js / React / TypeScript / Vercel
+# ============================================
+
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+.yarn/install-state.gz
+
+# Next.js build output
+.next/
+out/
+build/
+dist/
+.turbo/
+
+# Vercel
+.vercel/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Testing
+coverage/
+.nyc_output/
+playwright-report/
+test-results/
+blob-report/
+playwright/.cache/
+
+# Generated screenshots and temporary reports
+docs/screenshots/
+docs/references/
+docs/reference-inspection.json
+
+# TypeScript
+*.tsbuildinfo
+
+# Local Supabase state
+supabase/.branches/
+supabase/.temp/
+
+# Editor configuration
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+
+# Operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Temporary files
+tmp/
+temp/
+.cache/
+*.tmp
+*.bak
+*.old
+
+# Local archives
+*.zip
+*.rar
+*.7z
+
+# Tool and agent scratch files
+.codex/
+.claude/

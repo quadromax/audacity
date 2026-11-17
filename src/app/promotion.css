@@ -1,0 +1,773 @@
+/* Contract-led campaign composition. */
+:root {
+  --contract-height: 58px;
+}
+html {
+  scroll-padding-top: 90px;
+}
+body {
+  padding-top: var(--contract-height);
+}
+.contract-banner {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 90;
+  min-height: var(--contract-height);
+  background: #f4c69c;
+  color: #2a1727;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 4%;
+  box-shadow: 0 2px 20px #0d061b55;
+}
+.banner-brand {
+  font: 800 25px/0.9 var(--display);
+  white-space: nowrap;
+}
+.banner-brand small {
+  font: 8px var(--body);
+  display: block;
+  margin-top: 5px;
+  letter-spacing: 0.12em;
+}
+.banner-address {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+.banner-address code {
+  font: 12px monospace;
+  overflow-wrap: anywhere;
+}
+.banner-address strong {
+  font: 600 11px var(--body);
+  letter-spacing: 0.07em;
+}
+.copy-action {
+  position: relative;
+  flex-shrink: 0;
+}
+.copy-ca-button,
+.banner-buy,
+.buy-token {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 11px 16px;
+  background: #2b1b32;
+  color: #ffe9cd;
+  font: 600 10px var(--body);
+}
+.copy-action > span:empty {
+  display: none;
+}
+.copy-action > span:not(:empty) {
+  position: absolute;
+  top: calc(100% + 7px);
+  left: 0;
+  background: #fff1d6;
+  color: #2a1727;
+  z-index: 10;
+  font: 700 9px var(--body);
+  padding: 7px;
+  white-space: nowrap;
+  box-shadow: 0 2px 12px #0004;
+}
+.banner-buy {
+  background: #82374d;
+  color: #fff3de;
+}
+.world-header {
+  top: var(--contract-height);
+  height: 80px;
+}
+.director-opening {
+  height: calc(100svh - var(--contract-height));
+  min-height: 840px;
+  background: #28152f;
+}
+.director-opening .opening-environment {
+  inset: 0 -3% 0;
+  filter: saturate(0.65) brightness(0.66);
+}
+.director-opening .opening-grade {
+  background:
+    linear-gradient(90deg, #21132dea 0%, #45223b55 60%, #3e1a3711),
+    linear-gradient(0deg, #251329, transparent 80%);
+}
+.director-opening .sun-haze {
+  background:
+    radial-gradient(ellipse at 85% 50%, #eb667a40, transparent 60%),
+    radial-gradient(ellipse at 8% 70%, #384bee30, transparent 50%);
+  animation: police-glow 14s ease-in-out infinite alternate;
+}
+.director-opening .opening-edition {
+  top: 95px;
+  left: 5%;
+  right: 5%;
+  font-size: 8px;
+}
+.director-opening .opening-type {
+  left: 5%;
+  right: auto;
+  top: 155px;
+  bottom: auto;
+  font-size: clamp(145px, 16.5vw, 285px);
+  height: auto;
+  line-height: 0.8;
+  text-align: left;
+  z-index: 0;
+}
+.director-opening .opening-type > span,
+.director-opening .opening-type > span + span {
+  position: static;
+  display: block;
+  top: auto;
+  bottom: auto;
+  margin: 0;
+  font-size: 1em;
+  line-height: 0.78;
+  text-align: left;
+  color: #ffe1b9;
+}
+.director-opening .opening-type > span + span {
+  margin: 12px 0 0 4vw;
+  color: #eaa2b0;
+}
+.director-opening .opening-character {
+  right: -6%;
+  width: 67%;
+  height: 101%;
+  bottom: -8%;
+  z-index: 1;
+}
+.director-opening .opening-character img {
+  object-position: center bottom;
+}
+.director-opening .opening-copy {
+  left: 5%;
+  right: auto;
+  bottom: 55px;
+  max-width: none;
+  width: min(680px, 54%);
+  z-index: 6;
+  display: block;
+}
+.opening-aside {
+  display: none;
+}
+.opening-seal {
+  right: 4%;
+  top: 26%;
+}
+.hero-side-label {
+  right: 18px;
+}
+.director-opening .opening-bottom {
+  bottom: 16px;
+}
+.director-opening .opening-bottom > a {
+  font-size: 7px;
+}
+.scroll-circle {
+  display: none;
+}
+.token-plate {
+  background: #f2e4cc;
+  color: #2c2531;
+  border: 1px solid #fff2d7;
+  box-shadow:
+    8px 8px 0 #100c1c55,
+    0 20px 50px #140c2440;
+  position: relative;
+  transform: rotate(-1deg);
+}
+.token-plate:before,
+.token-plate:after {
+  content: "+";
+  position: absolute;
+  color: #80675e;
+  top: 8px;
+  font: 13px monospace;
+}
+.token-plate:before {
+  left: 10px;
+}
+.token-plate:after {
+  right: 10px;
+}
+.plate-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  border-bottom: 1px solid #57444444;
+  padding: 12px 26px;
+}
+.plate-header .mono {
+  font-size: 8px;
+  letter-spacing: 0.15em;
+}
+.plate-stamp {
+  font: 700 8px monospace;
+  border: 1px solid #954255;
+  padding: 4px 8px;
+  color: #88374a;
+  transform: rotate(3deg);
+}
+.plate-main {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 18px 25px 23px;
+}
+.plate-details {
+  min-width: 0;
+  flex: 1;
+}
+.plate-ticker {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.plate-ticker > strong {
+  font: 800 57px/0.85 var(--display);
+  letter-spacing: -0.02em;
+  color: #302136;
+}
+.plate-ticker > span {
+  font: 8px/1.6 monospace;
+  color: #72515a;
+}
+.plate-address {
+  margin-top: 17px;
+}
+.plate-address > .mono {
+  display: block;
+  font-size: 8px;
+  letter-spacing: 0.12em;
+  margin-bottom: 6px;
+  color: #70515c;
+}
+.plate-address code {
+  display: block;
+  font: 600 13px/1.7 monospace;
+  overflow-wrap: anywhere;
+  user-select: all;
+  color: #302136;
+}
+.reveal-message {
+  display: block;
+  font: 700 19px/1.1 var(--display);
+  letter-spacing: 0.04em;
+  color: #863b50;
+}
+.plate-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 17px;
+}
+.buy-token {
+  background: #8a354e;
+  color: #fff2db;
+}
+.chart-token {
+  font-size: 10px;
+  color: #713346;
+  text-decoration: underline;
+  padding: 10px 2px;
+}
+.plate-pending {
+  font-size: 10px;
+  line-height: 1.6;
+  color: #65505b;
+  max-width: 330px;
+}
+.trade-qr {
+  flex-shrink: 0;
+  width: 100px;
+  display: block;
+  text-align: center;
+  align-self: center;
+}
+.trade-qr > div {
+  padding: 4px;
+  background: white;
+}
+.trade-qr svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.trade-qr > span {
+  font: 7px/1.5 monospace;
+  display: block;
+  margin-top: 7px;
+  color: #49343f;
+}
+.plate-emblem {
+  width: 95px;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid #926b6a55;
+  color: #9b5963;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.plate-emblem span {
+  font: 700 12px/1.2 monospace;
+  text-align: center;
+}
+.plate-foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 9px 25px;
+  border-top: 1px solid #57444444;
+  font-size: 6px;
+  letter-spacing: 0.08em;
+  color: #6b4c58;
+}
+.metadata-ticker {
+  font-size: 9px;
+  color: #6b4c58;
+}
+.mobile-trading {
+  display: none;
+}
+.final-scene {
+  min-height: 1000px;
+}
+.final-copy {
+  max-width: 940px;
+  padding-top: 90px;
+}
+.final-copy h2 {
+  font-size: clamp(100px, 12vw, 185px);
+}
+.final-copy .token-plate {
+  margin-top: 30px;
+}
+.final-copy .plate-ticker {
+  display: none;
+}
+.closing-plate {
+  transform: none;
+}
+.closing-plate .plate-address {
+  margin-top: 0;
+}
+.closing-plate .plate-address code {
+  font-size: 15px;
+}
+.final-copy > .eyebrow {
+  color: #ffe1bf;
+}
+.final-copy .trade-guide {
+  max-width: 650px;
+}
+@keyframes police-glow {
+  0% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+@media (min-width: 1700px) {
+  .director-opening .opening-type {
+    font-size: min(17vw, 30svh);
+    top: 135px;
+  }
+  .director-opening .opening-copy {
+    bottom: 55px;
+  }
+  .director-opening .opening-character {
+    right: 0;
+    width: 62%;
+  }
+}
+@media (max-width: 1050px) and (min-width: 701px) {
+  .contract-banner {
+    gap: 12px;
+  }
+  .banner-address code {
+    font-size: 10px;
+  }
+  .director-opening .opening-copy {
+    width: 62%;
+  }
+  .director-opening .opening-type {
+    top: 180px;
+    font-size: 19vw;
+  }
+  .director-opening .opening-character {
+    right: -19%;
+    width: 90%;
+  }
+  .opening-seal {
+    display: none;
+  }
+  .plate-main {
+    gap: 15px;
+    padding-inline: 20px;
+  }
+  .trade-qr {
+    width: 85px;
+  }
+  .plate-ticker > strong {
+    font-size: 50px;
+  }
+  .plate-address code {
+    font-size: 11px;
+  }
+}
+@media (max-width: 700px) {
+  :root {
+    --contract-height: 100px;
+  }
+  html {
+    scroll-padding-top: 120px;
+    scroll-padding-bottom: 110px;
+  }
+  body {
+    padding-bottom: calc(86px + env(safe-area-inset-bottom));
+  }
+  .contract-banner {
+    min-height: 100px;
+    padding: 9px 18px;
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 7px 10px;
+  }
+  .banner-brand {
+    font-size: 24px;
+    grid-column: 1;
+  }
+  .banner-brand small {
+    display: inline;
+    font-size: 7px;
+    margin-left: 7px;
+  }
+  .banner-address {
+    grid-column: 1/-1;
+    grid-row: 2;
+    gap: 7px;
+  }
+  .banner-address code {
+    font-size: 10px;
+    line-height: 1.5;
+  }
+  .banner-address strong {
+    font-size: 9px;
+  }
+  .contract-banner .copy-ca-button,
+  .contract-banner .banner-buy {
+    font-size: 9px;
+    min-height: 32px;
+    padding: 7px 10px;
+  }
+  .contract-banner .copy-action {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .contract-banner .banner-buy {
+    grid-column: 3;
+    grid-row: 1;
+  }
+  .contract-banner .copy-action > span:not(:empty) {
+    top: 0;
+    left: auto;
+    right: 0;
+    transform: translateY(35px);
+  }
+  .world-header {
+    height: 66px;
+    top: 100px;
+  }
+  .world-brand {
+    font-size: 30px;
+  }
+  .world-brand i {
+    font-size: 5px;
+  }
+  .director-opening {
+    height: auto;
+    min-height: 1030px;
+    padding-bottom: 40px;
+  }
+  .director-opening .opening-edition {
+    top: 77px;
+    font-size: 6px;
+    left: 22px;
+  }
+  .director-opening .opening-type {
+    top: 120px;
+    left: 22px;
+    right: 22px;
+    bottom: auto;
+    font-size: 25vw;
+    z-index: 3;
+    height: auto;
+  }
+  .director-opening .opening-type > span,
+  .director-opening .opening-type > span + span {
+    font-size: 1em;
+    text-align: left;
+    line-height: 0.78;
+    position: static;
+    color: #ffe1b9;
+    text-shadow: 0 2px 20px #21112633;
+  }
+  .director-opening .opening-type > span + span {
+    margin: 8px 0 0;
+    color: #f0a9b9;
+  }
+  .director-opening .opening-character {
+    top: 75px;
+    bottom: auto;
+    right: -24%;
+    width: 117%;
+    height: 505px;
+    z-index: 2;
+  }
+  .director-opening .opening-character img {
+    object-position: center top;
+  }
+  .director-opening .opening-vignette {
+    inset: 330px 0 0;
+    background: linear-gradient(
+      0deg,
+      #251329 30%,
+      #251329dd 65%,
+      transparent 96%
+    );
+  }
+  .director-opening .opening-copy {
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    width: auto;
+    margin: 515px 18px 0;
+    z-index: 6;
+  }
+  .token-plate {
+    transform: none;
+    box-shadow: 5px 6px 0 #100c1c66;
+  }
+  .plate-header {
+    padding: 12px 16px;
+  }
+  .plate-header .mono {
+    font-size: 7px;
+  }
+  .plate-stamp {
+    font-size: 7px;
+    padding: 3px 6px;
+  }
+  .plate-main {
+    padding: 20px 16px;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+  .plate-details {
+    flex-basis: 100%;
+  }
+  .plate-ticker > strong {
+    font-size: 63px;
+  }
+  .plate-ticker > span {
+    font-size: 8px;
+  }
+  .plate-address {
+    margin-top: 20px;
+  }
+  .plate-address code {
+    font-size: 12px;
+    line-height: 1.8;
+  }
+  .reveal-message {
+    font-size: 24px;
+    line-height: 1.15;
+  }
+  .plate-actions {
+    gap: 9px;
+    margin-top: 20px;
+  }
+  .copy-ca-button,
+  .buy-token {
+    font-size: 10px;
+    padding: 13px;
+    min-height: 45px;
+  }
+  .plate-pending {
+    font-size: 11px;
+  }
+  .trade-qr {
+    width: 78px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-basis: 100%;
+    text-align: left;
+  }
+  .trade-qr > div {
+    width: 78px;
+    flex-shrink: 0;
+  }
+  .trade-qr > span {
+    max-width: 100px;
+    font-size: 9px;
+  }
+  .plate-emblem {
+    display: none;
+  }
+  .plate-foot {
+    font-size: 6px;
+    padding: 10px 16px;
+  }
+  .plate-foot > span:last-child {
+    max-width: 115px;
+    text-align: right;
+  }
+  .director-opening .opening-bottom {
+    bottom: 18px;
+    left: 22px;
+    right: 22px;
+  }
+  .mobile-trading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 12px 18px calc(12px + env(safe-area-inset-bottom));
+    background: #efc69e;
+    color: #2b1b32;
+    z-index: 85;
+    min-height: 80px;
+    box-shadow: 0 -4px 20px #0f071d55;
+  }
+  .mobile-trading > div:first-child {
+    min-width: 0;
+  }
+  .mobile-trading strong {
+    display: block;
+    font: 800 24px/0.9 var(--display);
+  }
+  .mobile-trading small {
+    font: 7px var(--body);
+  }
+  .mobile-trading > div:first-child > a,
+  .mobile-trading > div:first-child > span {
+    font: 7px/1.6 monospace;
+    display: block;
+    margin-top: 7px;
+  }
+  .mobile-trading .copy-ca-button,
+  .mobile-trading .banner-buy {
+    font-size: 9px;
+    min-height: 42px;
+    padding: 10px;
+  }
+  .mobile-trading .copy-action > span:not(:empty) {
+    top: auto;
+    bottom: calc(100% + 8px);
+    left: auto;
+    right: 0;
+  }
+  .final-scene {
+    min-height: 1100px;
+  }
+  .final-copy {
+    padding: 420px 18px 65px;
+  }
+  .final-copy h2 {
+    font-size: 105px;
+  }
+  .final-copy .token-plate {
+    margin-top: 25px;
+  }
+  .closing-plate .plate-address code {
+    font-size: 12px;
+  }
+  .world-subpage {
+    padding-top: 66px;
+  }
+  .world-menu {
+    padding-bottom: 110px;
+  }
+}
+@media (max-width: 360px) {
+  .banner-address code {
+    font-size: 9px;
+  }
+  .contract-banner {
+    padding-inline: 12px;
+  }
+  .plate-ticker > strong {
+    font-size: 55px;
+  }
+  .plate-ticker > span {
+    font-size: 7px;
+  }
+  .plate-address code {
+    font-size: 11px;
+  }
+  .copy-ca-button,
+  .buy-token {
+    padding: 11px;
+    font-size: 9px;
+  }
+  .mobile-trading {
+    padding-inline: 12px;
+    gap: 8px;
+  }
+  .final-copy h2 {
+    font-size: 90px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .director-opening .sun-haze {
+    animation: none;
+  }
+}
+@media (min-width: 701px) {
+  .director-opening .opening-type {
+    top: 140px;
+    font-size: min(18vw, 23svh);
+  }
+}
+@media (max-width: 700px) {
+  .director-opening {
+    padding-top: 515px;
+  }
+  .director-opening .opening-copy {
+    margin: 0 18px;
+  }
+}
+@media (max-width: 700px) {
+  .director-opening .opening-type {
+    top: 300px;
+  }
+  .contract-banner .copy-action > span:not(:empty) {
+    transform: translateY(85px);
+  }
+}
