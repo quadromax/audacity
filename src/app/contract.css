@@ -658,6 +658,28 @@
   }
 }
 
+.token-name-with-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.2em;
+}
+.audacity-token-logo {
+  display: block;
+  width: 0.9em;
+  height: 0.9em;
+  flex: 0 0 auto;
+  object-fit: contain;
+}
+@media (max-width: 400px) {
+  .token-plate .token-name-with-logo {
+    gap: 5px;
+  }
+  .token-plate .audacity-token-logo {
+    width: 22px;
+    height: 22px;
+  }
+}
+
 /* Compact contract masthead, aligned to the cinematic navigation. */
 .contract-banner {
   display: grid;

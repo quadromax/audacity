@@ -65,7 +65,8 @@ test("all routes, redirects, artwork, metadata and browser errors", async ({
   await page.goto("/");
   await expect(page).toHaveTitle("AUDACITY");
   for (const path of [
-    "/icon.svg",
+    "/icon.png",
+    "/favicon.ico",
     "/opengraph-image",
     "/sitemap.xml",
     "/robots.txt",

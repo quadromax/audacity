@@ -6,6 +6,7 @@ import { useWanted } from "../providers";
 import { Contract } from "./controls";
 import { BuyAction, LaunchStatus } from "./token-promotion";
 import { PriceChart } from "./price-chart";
+import { TokenLogo } from "./token-logo";
 export function quote(value: number, price = false) {
   return new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -81,7 +82,9 @@ export function Exchange({ expanded = false }: { expanded?: boolean }) {
           <div className="terminal-identity">
             <div>
               <p className="mono">{token.name} / SOLANA</p>
-              <h3>${token.symbol}</h3>
+              <h3 className="token-name-with-logo">
+                <TokenLogo />${token.symbol}
+              </h3>
               <div className="terminal-price">
                 {data?.price != null ? quote(data.price, true) : "—"}
                 {data?.change != null && (

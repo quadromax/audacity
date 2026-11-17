@@ -8,6 +8,7 @@ import { useToken } from "@/hooks/use-token";
 import { displayedContract, launchLabel } from "@/lib/launch";
 import { copyText } from "@/lib/clipboard";
 import { useSite } from "../providers";
+import { TokenLogo } from "./token-logo";
 const TradingQR = dynamic(() => import("./trading-qr"));
 export function LaunchStatus() {
   const { config, data, isError } = useToken();
@@ -130,7 +131,9 @@ export function TokenPanel({ final = false }: { final?: boolean }) {
       <div className="plate-main">
         <div className="plate-details">
           <div className="plate-ticker">
-            <strong>${token.symbol}</strong>
+            <strong className="token-name-with-logo">
+              <TokenLogo />${token.symbol}
+            </strong>
             <div className="plate-network">
               <Image
                 className="solana-mark"
