@@ -13,9 +13,6 @@ export function launchLabel(
 ) {
   if (invalid) return "CHECK CONFIGURED ADDRESS";
   if (!mint) return "LAUNCHING";
-  if (error) return "VERIFICATION UNAVAILABLE";
-  if (!data) return "VERIFYING MINT";
-  if (data.verification === "not-mint") return "NOT A TOKEN MINT";
-  if (data.verification !== "verified") return "VERIFICATION UNAVAILABLE";
+  if (error || !data || data.verification !== "verified") return "LAUNCHING";
   return data.status === "live" ? "MARKET AVAILABLE" : "MINT VERIFIED";
 }

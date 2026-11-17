@@ -12,15 +12,16 @@ import { TokenLogo } from "./token-logo";
 const TradingQR = dynamic(() => import("./trading-qr"));
 export function LaunchStatus() {
   const { config, data, isError } = useToken();
+  const label = launchLabel(config.mint, config.invalidMint, data, isError);
   return (
     <span
       className={
         "launch-status " +
-        (!config.mint && !config.invalidMint ? "is-soon" : "")
+        (label === "LAUNCHING" ? "is-soon" : "")
       }
     >
       <i aria-hidden="true" />
-      {launchLabel(config.mint, config.invalidMint, data, isError)}
+      {label}
     </span>
   );
 }
