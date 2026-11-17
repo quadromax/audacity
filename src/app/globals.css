@@ -7,8 +7,8 @@
   --pink: #eb8ba2;
   --paper: #e9dfcb;
   --line: #ffffff24;
-  --display: "Barlow Condensed", Impact, sans-serif;
-  --body: "Inter", Arial, sans-serif;
+  --display: var(--font-display), Impact, sans-serif;
+  --body: var(--font-body), Arial, sans-serif;
 }
 * {
   box-sizing: border-box;

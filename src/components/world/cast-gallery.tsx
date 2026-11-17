@@ -1,7 +1,7 @@
 "use client";
-import Image from "next/image";
+import { DeferredImage as Image } from "../deferred-image";
 import { useRef, useState, type CSSProperties } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, m, useReducedMotion } from "motion/react";
 import { ArrowLeft, ArrowRight, ArrowUpRight, Plus, Minus } from "lucide-react";
 import { characters, characterSource } from "@/config/characters";
 import { useWanted } from "../providers";
@@ -51,12 +51,14 @@ export function CastGallery() {
           }
         }}
       >
-        <div className="cast-atmosphere" />
+        <div className="cast-atmosphere">
+          <Image src="/assets/backgrounds/leonida-dusk.webp" alt="" fill sizes="100vw" />
+        </div>
         <span className="cast-giant-index" aria-hidden="true">
           0{index + 1}
         </span>
         <AnimatePresence mode="wait" initial={false}>
-          <motion.div
+          <m.div
             className={
               "cast-portrait " + (entry.id === "real-dimez" ? "duo" : "")
             }
@@ -75,9 +77,8 @@ export function CastGallery() {
               }
               fill
               sizes="(max-width:700px) 100vw, 65vw"
-              priority={index === 0}
             />
-          </motion.div>
+          </m.div>
         </AnimatePresence>
         <div
           className="cast-profile"
@@ -88,7 +89,7 @@ export function CastGallery() {
         >
           <p className="mono">AUDACITY / CHARACTER ARCHIVE / 0{index + 1}</p>
           <AnimatePresence mode="wait" initial={false}>
-            <motion.h3
+            <m.h3
               key={entry.id}
               initial={reduced ? false : { opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
@@ -96,7 +97,7 @@ export function CastGallery() {
               transition={{ duration: reduced ? 0 : 0.2 }}
             >
               {entry.name}
-            </motion.h3>
+            </m.h3>
           </AnimatePresence>
           <span className="cast-role">{entry.role}</span>
           <p className="cast-bio">{entry.bio}</p>

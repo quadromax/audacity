@@ -1,0 +1,16 @@
+[
+  {
+    "width": 390,
+    "beforeHeight": 10020,
+    "afterHeight": 10020,
+    "meanChannelDifference": 0.42057176245799,
+    "changedChannelsOver20": 0.00030332497398365664
+  },
+  {
+    "width": 1440,
+    "beforeHeight": 8786,
+    "afterHeight": 8786,
+    "meanChannelDifference": 0.5231744420837865,
+    "changedChannelsOver20": 0.0003707234151975786
+  }
+]

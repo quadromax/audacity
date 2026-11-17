@@ -2,7 +2,11 @@ import type { NextConfig } from "next";
 const config: NextConfig = {
   poweredByHeader: false,
   devIndicators: false,
-  images: { qualities: [75, 90] },
+  images: {
+    qualities: [75, 90],
+    formats: ["image/avif", "image/webp"],
+    minimumCacheTTL: 86400,
+  },
   async headers() {
     return [
       {

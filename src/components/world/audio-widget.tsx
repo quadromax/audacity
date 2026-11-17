@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { Volume2, VolumeX } from "lucide-react";
-import { composeSoundtrack } from "@/lib/soundtrack";
 const key = "audacity-audio-v1";
 export function AudioWidget() {
   const [on, setOn] = useState(false),
@@ -63,6 +62,7 @@ export function AudioWidget() {
       const current = engine.current;
       await current.ctx.resume();
       if (!current.source) {
+        const { composeSoundtrack } = await import("@/lib/soundtrack");
         const buffer = await composeSoundtrack();
         if (!mounted.current) return;
         const source = current.ctx.createBufferSource();

@@ -3,7 +3,7 @@
   --ink: #fff0d4;
   --pink: #f19cb1;
   --paper: #f2dfc0;
-  --display: "Barlow Condensed", Impact, sans-serif;
+  --display: var(--font-display), Impact, sans-serif;
 }
 .world-brand {
   font-size: 34px;
@@ -354,11 +354,10 @@
     linear-gradient(110deg, #1c1a25, #3d293b);
   transition: background 0.4s;
 }
-.cast-atmosphere:after {
-  content: "";
+.cast-atmosphere img {
   position: absolute;
   inset: 0;
-  background: url("/assets/backgrounds/leonida-dusk.webp") center/cover;
+  object-fit: cover;
   opacity: 0.12;
   mix-blend-mode: luminosity;
 }

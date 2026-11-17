@@ -7,7 +7,9 @@ import {
   useCallback,
 } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { MotionConfig } from "motion/react";
+import { LazyMotion, MotionConfig } from "motion/react";
+const loadMotionFeatures = () =>
+  import("@/lib/motion-features").then((m) => m.default);
 import type { SiteConfig } from "@/config/site";
 const Context = createContext<SiteConfig | null>(null);
 export const useSite = () => useContext(Context)!;
@@ -75,7 +77,9 @@ export function Providers({
     <Context value={config}>
       <QueryClientProvider client={q}>
         <Wanted value={{ found, discover, reset }}>
-          <MotionConfig reducedMotion="user">{children}</MotionConfig>
+          <LazyMotion features={loadMotionFeatures}>
+            <MotionConfig reducedMotion="user">{children}</MotionConfig>
+          </LazyMotion>
         </Wanted>
       </QueryClientProvider>
     </Context>

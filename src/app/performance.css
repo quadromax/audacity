@@ -1,0 +1,67 @@
+/* The existing GSAP entrance, on the compositor from first paint.
+   linear() samples power3.out (1 - (1 - t)^4); timings/stagger are unchanged.
+   Individual translate/scale leave GSAP's desktop parallax transform free. */
+@media (prefers-reduced-motion: no-preference) {
+  .audacity-hero {
+    --entrance-ease: linear(
+      0,
+      0.185494,
+      0.3439,
+      0.477994,
+      0.5904,
+      0.683594,
+      0.7599,
+      0.821494,
+      0.8704,
+      0.908494,
+      0.9375,
+      0.958994,
+      0.9744,
+      0.984994,
+      0.9919,
+      0.996094,
+      0.9984,
+      0.999494,
+      0.9999,
+      0.999994,
+      1
+    );
+  }
+  .audacity-sky {
+    animation: audacity-sky-enter 1.5s var(--entrance-ease) both;
+  }
+  .lead-character {
+    --enter-y: 35px;
+    animation: audacity-enter 1.1s var(--entrance-ease) 0.1s both;
+  }
+  .lead-lucia {
+    animation-delay: 0.2s;
+  }
+  .audacity-title {
+    --enter-y: 45px;
+    animation: audacity-enter 0.9s var(--entrance-ease) 0.25s both;
+  }
+  .campaign-copy,
+  .audacity-contract {
+    --enter-y: 20px;
+    animation: audacity-enter 0.7s var(--entrance-ease) 0.5s both;
+  }
+}
+@keyframes audacity-enter {
+  from {
+    translate: 0 var(--enter-y);
+    opacity: 0;
+  }
+  to {
+    translate: 0 0;
+    opacity: 1;
+  }
+}
+@keyframes audacity-sky-enter {
+  from {
+    scale: 1.06;
+  }
+  to {
+    scale: 1;
+  }
+}

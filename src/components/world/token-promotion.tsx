@@ -1,12 +1,14 @@
 "use client";
-import { useMemo, useState, useEffect, useRef } from "react";
-import qr from "qrcode-generator";
+import { useState, useEffect, useRef } from "react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight, Copy, Check } from "lucide-react";
 import { useToken } from "@/hooks/use-token";
 import { displayedContract, launchLabel } from "@/lib/launch";
 import { copyText } from "@/lib/clipboard";
+import { useSite } from "../providers";
+const TradingQR = dynamic(() => import("./trading-qr"));
 export function LaunchStatus() {
   const { config, data, isError } = useToken();
   return (
@@ -36,7 +38,7 @@ export function AddressDisplay() {
   );
 }
 export function CopyCA() {
-  const { config } = useToken(),
+  const config = useSite(),
     [message, setMessage] = useState(""),
     [busy, setBusy] = useState(false);
   const value = displayedContract(config.mint);
@@ -116,13 +118,6 @@ export function BuyAction({
 }
 export function TokenPanel({ final = false }: { final?: boolean }) {
   const { config, token, data } = useToken();
-  const svg = useMemo(() => {
-    if (!config.pump) return "";
-    const code = qr(0, "M");
-    code.addData(config.pump);
-    code.make();
-    return code.createSvgTag({ scalable: true, margin: 8 });
-  }, [config.pump]);
   return (
     <div
       className={"token-plate " + (final ? "closing-plate" : "")}
@@ -182,11 +177,7 @@ export function TokenPanel({ final = false }: { final?: boolean }) {
             rel="noopener noreferrer"
             aria-label="Open the verified mint on Pump.fun"
           >
-            <div
-              role="img"
-              aria-label="Pump.fun trading QR code"
-              dangerouslySetInnerHTML={{ __html: svg }}
-            />
+            <TradingQR url={config.pump} />
             <span>SCAN TO PUMP.FUN ↗</span>
           </a>
         ) : null}

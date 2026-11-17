@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+import { DeferredImage as Image } from "../deferred-image";
 import { ArrowUpRight, MoveUpRight } from "lucide-react";
 import { useState } from "react";
 const locations = [

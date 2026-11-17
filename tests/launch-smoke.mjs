@@ -25,7 +25,8 @@ try{
   for(const selector of ['#contract','.closing-plate','.terminal-identity','.how-to-buy',...(width===390?['.mobile-trading']:[])]){
    await expect(page.locator(selector).getByRole('link',{name:/BUY/}).first()).toHaveAttribute('href','https://pump.fun/coin/'+mint);
   }
-  await expect(page.locator('#contract .plate-ticker strong')).toHaveText('$AUDTEST');
+  await expect(page.locator('#contract .plate-ticker > strong')).toHaveText('$AUDTEST');
+  await expect(page.locator('#contract .trade-qr svg')).toHaveCount(1);
   await expect(page.locator('#contract .trade-qr')).toHaveAttribute('href','https://pump.fun/coin/'+mint);
   await expect(page.locator('.terminal-identity .terminal-price')).toContainText('$0.000123');
   await expect(page.locator('.candle-canvas canvas').first()).toBeVisible();

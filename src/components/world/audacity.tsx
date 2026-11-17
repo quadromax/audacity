@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import { DeferredImage } from "../deferred-image";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
@@ -8,7 +9,11 @@ import { WantedStars } from "./controls";
 export function AudacityHero() {
   const ref = useRef<HTMLElement>(null);
   useEffect(() => {
-    if (matchMedia("(prefers-reduced-motion:reduce)").matches) return;
+    if (
+      matchMedia("(prefers-reduced-motion:reduce)").matches ||
+      !matchMedia("(min-width:900px) and (pointer:fine)").matches
+    )
+      return;
     let alive = true,
       dispose = () => {};
     Promise.all([import("gsap"), import("gsap/ScrollTrigger")]).then(
@@ -16,20 +21,6 @@ export function AudacityHero() {
         if (!alive) return;
         gsap.registerPlugin(ScrollTrigger);
         const ctx = gsap.context(() => {
-          gsap
-            .timeline({ defaults: { ease: "power3.out" } })
-            .from(".audacity-sky", { scale: 1.06, duration: 1.5 })
-            .from(
-              ".lead-character",
-              { y: 35, opacity: 0, duration: 1.1, stagger: 0.1 },
-              0.1,
-            )
-            .from(".audacity-title", { y: 45, opacity: 0, duration: 0.9 }, 0.25)
-            .from(
-              ".campaign-copy,.audacity-contract",
-              { y: 20, opacity: 0, duration: 0.7 },
-              0.5,
-            );
           if (matchMedia("(min-width:900px) and (pointer:fine)").matches) {
             gsap.to(".audacity-sky", {
               yPercent: 10,
@@ -59,6 +50,7 @@ export function AudacityHero() {
           alt=""
           fill
           priority
+          fetchPriority="high"
           sizes="100vw"
         />
       </div>
@@ -92,6 +84,7 @@ export function AudacityHero() {
           alt="Jason Duval, original fan artwork"
           fill
           priority
+          fetchPriority="high"
           sizes="(max-width:700px) 75vw, 45vw"
         />
       </div>
@@ -101,6 +94,7 @@ export function AudacityHero() {
           alt="Lucia Caminos, original fan artwork"
           fill
           priority
+          fetchPriority="high"
           sizes="(max-width:700px) 75vw, 45vw"
         />
       </div>
@@ -141,7 +135,7 @@ export function AudacityTakeover() {
   return (
     <section className="audacity-takeover" id="final-job">
       <div className="takeover-backdrop">
-        <Image
+        <DeferredImage
           src="/assets/backgrounds/leonida-dusk.webp"
           alt=""
           fill
@@ -165,7 +159,7 @@ export function AudacityTakeover() {
           "brian",
         ].map((id, i) => (
           <div key={id} className={"ensemble-person person-" + i}>
-            <Image
+            <DeferredImage
               src={"/assets/audacity/" + id + ".webp"}
               alt={
                 id === "real-dimez"

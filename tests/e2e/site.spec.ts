@@ -2,6 +2,11 @@ import { test, expect, type Page } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import { DEMO_CA } from "../../src/lib/launch";
 async function loadArt(page: Page) {
+  // Exercise viewport loading before capturing the entire long page.
+  for (const section of await page.locator("main > section").all()) {
+    await section.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(120);
+  }
   await page
     .locator("main img")
     .evaluateAll((images) =>
@@ -24,6 +29,7 @@ async function loadArt(page: Page) {
     )
     .toBe(true);
   await page.evaluate(() => document.fonts.ready);
+  await page.evaluate(() => scrollTo({ top: 0, behavior: "instant" }));
 }
 test("all routes, redirects, artwork, metadata and browser errors", async ({
   page,

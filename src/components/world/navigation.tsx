@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, m } from "motion/react";
 import { ArrowUpRight, Menu, X, ArrowUp } from "lucide-react";
 import { AddressDisplay, CopyCA, LaunchStatus } from "./token-promotion";
 import { WantedStars } from "./controls";
@@ -97,7 +97,7 @@ export function WorldHeader() {
       >
         <AnimatePresence>
           {open && (
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
@@ -127,7 +127,7 @@ export function WorldHeader() {
                   The Leonida state of mind.
                 </p>
               </div>
-            </motion.div>
+            </m.div>
           )}
         </AnimatePresence>
       </dialog>

@@ -8,6 +8,7 @@ export function useToken() {
   const query = useQuery({
     queryKey: ["market", config.mint],
     queryFn: () => api<Market>("/api/market"),
+    enabled: Boolean(config.mint),
     refetchInterval: 45000,
     staleTime: 40000,
     retry: 1,
